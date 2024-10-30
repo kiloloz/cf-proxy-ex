@@ -640,8 +640,7 @@ const mainPage = `
 <body>
     <h3 class="center">
     Help you access blocked websites!
-    <br>
-    Reference <a href="https://github.com/1234567Yang/cf-proxy-ex/">https://github.com/1234567Yang/cf-proxy-ex/</a>.
+    <br>    
     </h3>
 
     <form id="urlForm" onsubmit="redirectToProxy(event)">
