@@ -514,91 +514,164 @@ const mainPage = `
 <html>
 <head>
   <style>
-    body{
-      background:rgb(150,10,10);
-      color:rgb(240,240,0);
+    :root {
+      --primary-bg: #1a1a2e;
+      --secondary-bg: #16213e;
+      --accent-color: #e94560;
+      --text-primary: #ffffff;
+      --text-secondary: #e1e1e1;
+      --input-bg: #242b3e;
     }
-    a{
-      color:rgb(250,250,180);
+
+    body {
+      background: var(--primary-bg);
+      color: var(--text-primary);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 20px;
     }
-    del{
-      color:rgb(190,190,190);
+
+    a {
+      color: var(--accent-color);
+      text-decoration: none;
+      transition: color 0.3s ease;
     }
-    .center{
-      text-align:center;
+
+    a:hover {
+      color: #ff6b81;
     }
-    .important{
-      font-weight:bold;
-      font-size:27;
+
+    del {
+      color: #666;
     }
-    /* my style begins*/
+
+    .center {
+      text-align: center;
+    }
+
+    .important {
+      font-weight: bold;
+      font-size: 1.5rem;
+      color: var(--accent-color);
+    }
+
     form[id=urlForm] {
-        max-width: 340px;
-        min-width: 340px;
-        margin: 0 auto;
-     }
+      max-width: 600px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background: var(--secondary-bg);
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    
+    }
+
+    fieldset {
+      border: 2px solid var(--accent-color);
+      border-radius: 8px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    legend {
+      color: var(--accent-color);
+      font-size: 1.2rem;
+      padding: 0 1rem;
+    }
+
     input[id=targetUrl] {
-        background-color: rgb(240,240,0);
-     }
+      width: 400px;
+      padding: 0.8rem;
+      margin: 0.5rem 0;
+      background: var(--input-bg);
+      border: 1px solid #444;
+      border-radius: 4px;
+      color: var(--text-primary);
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      
+    }
+
+    input[id=targetUrl]:focus {
+      border-color: var(--accent-color);
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(233, 69, 96, 0.2);
+    }
+
     button[id=jumpButton] {
-        background-color: rgb(240,240,0);
-     }
+      width: 100%;
+      padding: 0.8rem;
+      margin-top: 1rem;
+      background: var(--accent-color);
+      border: none;
+      border-radius: 4px;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button[id=jumpButton]:hover {
+      background: #ff6b81;
+    }
+
+    ul {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 2rem;
+    }
+
+    li {
+      margin-bottom: 1.5rem;
+      background: var(--secondary-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    h3 {
+      color: var(--accent-color);
+      margin: 2rem 0;
+    }
   </style>
 </head>
 <body>
     <h3 class="center">
-        I made this project because some extreme annoying network filter software in my school, which is notorious "Goguardian", and now it is open source at <a>https://github.com/1234567Yang/cf-proxy-ex/</a>.
-      </h3>
-      <br><br><br>
-      <ul style="font-size:25;">
-      <li class="important">How to use this proxy:<br>
-        Type the website you want to go to after the website's url, for example: <br>
-        https://the current url/github.com<br>OR<br>https://the current url/https://github.com</li>
-      </ul>
-        <form id="urlForm" onsubmit="redirectToProxy(event)">
-            <fieldset>
-                <legend>Proxy Everything</legend>
-                <label for="targetUrl">TargetUrl: <input type="text" id="targetUrl" placeholder="Enter the target URL here..."></label>
-                <button type="submit" id="jumpButton">Jump!</button>
-            </fieldset>
-        </form>
-        <script>
-            function redirectToProxy(event) {
-                event.preventDefault();
-                const targetUrl = document.getElementById('targetUrl').value.trim();
-                const currentOrigin = window.location.origin;
-                window.open(currentOrigin + '/' + targetUrl, '_blank');
-            }
-        </script>
-      <ul>
-        <li>If your browser show 400 bad request, please clear your browser cookie<br></li>
-        <li>Why I make this:<br> Because school blcok every website that I can find math / CS and other subjects' study material and question solutions. In the eyes of the school, China (and some other countries) seems to be outside the scope of this "world". They block access to server IP addresses in China and block access to Chinese search engines and video websites. Of course, some commonly used social software has also been blocked, which once made it impossible for me to send messages to my parents on campus. I don't think that's how it should be, so I'm going to fight it as hard as I can. I believe this will not only benefit myself, but a lot more people can get benefits.</li>
-       <li>If this website is blocked by your school: <br>Contact me at <a href="mailto:help@wvusd.homes">help@wvusd.homes</a>, and I will setup a new webpage.</li>
-        <li>Limitation:<br>Although I tried my best to make every website proxiable, there still might be pages or resources that can not be load, and the most important part is that <span class="important">YOU SHOULD NEVER LOGIN ANY ACCOUNT VIA ONLINE PROXY</span>.</li>
-      </ul>
-
-    <h3>
-        <br>
-        <span>Proxies that can bypass the school network blockade:</span>
-        <br><br>
-        <span>Traditional VPNs such as <a href="https://hide.me/">hide me</a>.</span>
-        <br><br>
-        <a href="https://www.torproject.org/">Tor Browser</a><span>, short for The Onion Router, is free and open-source software for enabling anonymous communication. It directs Internet traffic via a free, worldwide volunteer overlay network that consists of more than seven thousand relays. Using Tor makes it more difficult to trace a user's Internet activity.</span>
-        <br><br>
-        <a href="https://v2rayn.org/">v2RayN</a><span> is a GUI client for Windows, support Xray core and v2fly core and others. You must subscribe to an <a href = "https://aijichang.org/6190/">airport</a> to use it. For example, you can subscribe <a href="https://feiniaoyun.xyz/">fly bird cloud</a>.</span>
-        <br><br>
-        <span>Bypass <del>Goguardian</del> by proxy: You can buy a domain($1) and setup by yourself: </span><a href="https://github.com/gaboolic/cloudflare-reverse-proxy">how to setup a proxy</a><span>. Unless <del>Goguardian</del> use white list mode, this can always work.</span>
-        <br>
-        <span>Too expensive? Never mind! There are a lot of free domains registration companies (for the first year of the domain) that do not need any credit card, search online!</span>
-        <br><br>
-        <span>Youtube video unblock: "Thanks" for Russia that they started to invade Ukraine and Google blocked the traffic from Russia, there are a LOT of mirror sites working. You can even <a href="https://github.com/iv-org/invidious">setup</a> one by yourself.</span>
+    Help you access blocked websites!
+    <br>
+    Reference <a href="https://github.com/1234567Yang/cf-proxy-ex/">https://github.com/1234567Yang/cf-proxy-ex/</a>.
     </h3>
-    <a href="https://goguardian.com" style="visibility:hidden"></a>
-    <a href="https://blocked.goguardian.com/" style="visibility:hidden"></a>
-    <a href="https://www.google.com/gen_204" style="visibility:hidden"></a>
-    <p style="font-size:280px !important;width:100%;" class="center">
-        ☭
-    </p>
+
+    <form id="urlForm" onsubmit="redirectToProxy(event)">
+        <fieldset>
+            <legend>Proxy Everything</legend>
+            <label for="targetUrl">
+                <input type="text" id="targetUrl" placeholder="Enter the target URL here...">
+            </label>
+            <button type="submit" id="jumpButton">Access Site</button>
+        </fieldset>
+    </form>
+    <ul>
+        <li class="default">How to use this proxy:<br>
+        Enter the URL of the website you wish to access in the input box and click the "Access Site" button. </li>
+        
+        <li>If your browser shows 400 bad request, please clear your browser cookie</li>
+        
+        <li><span class="important">YOU SHOULD NEVER LOGIN ANY ACCOUNT VIA ONLINE PROXY</span>.</li>
+    </ul>
+
+    
+    
+    <script>
+        function redirectToProxy(event) {
+            event.preventDefault();
+            const targetUrl = document.getElementById('targetUrl').value.trim();
+            const currentOrigin = window.location.origin;
+            window.open(currentOrigin + '/' + targetUrl, '_blank');
+        }
+    </script>
 </body>
 </html>
 `;
