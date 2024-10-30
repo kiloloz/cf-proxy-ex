@@ -661,7 +661,9 @@ const mainPage = `
         <li><span class="important">YOU SHOULD NEVER LOGIN ANY ACCOUNT VIA ONLINE PROXY</span>.</li>
     </ul>
 
-    
+    <p class="center">
+        credit to: <a href="https://github.com/1234567Yang/cf-proxy-ex" target="_blank">https://github.com/1234567Yang/cf-proxy-ex</a>
+    </p>
     
     <script>
         function redirectToProxy(event) {
